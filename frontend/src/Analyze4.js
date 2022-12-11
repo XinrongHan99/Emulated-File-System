@@ -35,7 +35,6 @@ class Analyze extends React.Component {
 
     handleForm = e => {
         const target = e.target
-
         const value = target.type == 'checkbox'
             ? target.checked
             : target.value
@@ -46,6 +45,7 @@ class Analyze extends React.Component {
             [name]: value
         })
     }
+
     render() {
         return (
             <div className="App">

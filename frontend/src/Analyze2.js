@@ -7,24 +7,48 @@ import "./Home.css"
 export default function Analyze2(props) {
     const baseURL = "http://127.0.0.1:8000/api"
     const [num, setNum] = useState('');
-    const [datarry, setdatarry] = useState([])
-    const [submit, setsubmit] = useState(false)
-   
+    const [submit, toggleSubmit] = useState(false);
+    let JsonData = ""
+    const [arr, setdatarry] = useState([]);
+    let jsonarray = [];
 
     const handleNumChange = (event) => {
         setNum(event.target.value);
     };
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const res = await axios.get(`${baseURL}/mapreduce/?dataSet=restaurants&top_review_num=${num}`)
-            const data = res.data.res
-            console.log(data)
-        } catch(err) {
+            jsonarray = res.data.res
+            let newarr = []
+            for (let i = 0; i < jsonarray.length; i++) {
+                newarr.push({
+                    id: newarr.length,
+                    city: jsonarray[i].city,
+                    name: jsonarray[i].name,
+                    rate: jsonarray[i].rate,
+                    reviewCount: jsonarray[i].review_cnt,
+                })
+            }
+            setdatarry(newarr)
+            toggleSubmit(true)
+        } catch (err) {
             console.error(err)
         }
     }
+
+    const DisplayData = arr.map((info) => {
+        return (
+            <tr>
+                <td>{info.city}</td>
+                <td>{info.name}</td>
+                <td>{info.rate}</td>
+                <td>{info.reviewCount}</td>
+            </tr>
+        )
+    }
+    )
 
     return (
         <div className="App">
@@ -42,6 +66,25 @@ export default function Analyze2(props) {
                 <br />
                 <button className="button" type="submit">Submit</button>
             </form>
+            <br />
+            {
+                submit && <div className="result table">
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>Restaurant Name</th>
+                                <th>Rate</th>
+                                <th>Number of Reviews</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {DisplayData}
+                        </tbody>
+                    </table>
+
+                </div>
+            }
         </div>
     );
 }

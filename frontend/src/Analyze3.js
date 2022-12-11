@@ -33,8 +33,6 @@ export default function Analyze3(props) {
         const result = await fetch(`http://127.0.0.1:8000/api/mapreduce/?dataSet=cityAndRest&rankmin=${numin}&rankmax=${numax}&score=5`)
         JsonData = await result.json();
         jsonarray = JsonData.res;
-        console.log("check json arr:")
-        console.log(jsonarray)
         let newarr = []
         for (let i = 0; i < jsonarray.length; i++) {
             newarr.push({
@@ -45,9 +43,7 @@ export default function Analyze3(props) {
                 resNum: jsonarray[i].restNum,
             })
         }
-        console.log(newarr)
         setdatarry(newarr)
-        console.log(arr)
         toggleSubmit(true)
 
     }
@@ -90,7 +86,7 @@ export default function Analyze3(props) {
             </form>
             <br />
             {submit && <div className="result table">
-                <table>
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <th>Name</th>

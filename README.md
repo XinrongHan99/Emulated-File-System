@@ -53,18 +53,3 @@ Open the backend directory
 
 #### `python3 manage.py runserver`
 Starting development server at http://127.0.0.1:8000/
-
-## Approach
-I adopted the `BEM` naming style for my css class names and ...
-
-## Status
-[name of project] is still in progress. `Version 2` will be out soon.
-
-## Credits
-List of contriubutors:
-- [John Doe](johndoe.com)
-- [Beginners guide to BEM](link-goes-here.com)
-
-## License
-
-MIT license @ [author](author.com)

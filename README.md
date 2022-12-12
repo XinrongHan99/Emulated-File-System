@@ -9,13 +9,13 @@
 - [Technologies](#technologies)
 - [Setup](#setup)
 
-## About The App
+## 🧐 About The App
 This project is developing and utilizing an emulation-based system for distributed file storage and parallel computation, in this project, we designed EDFS Api to realize file system operations such as mkdir/ls/cat/rm etc. We used two database(mySQL-based emulation and Firebase-based emulation) to represent the hierachy of file, we also built an web app for the interface of file system.
 
-## Technologies
-I used `Django` for backend and `React` for frontend
+## 🚀 Technologies
+We used `Django` for backend and `React` for frontend
 
-## Setup
+## ⚙️ Setup
 
 Firstly, download django 3.3.0 and node v16.18.0
 
